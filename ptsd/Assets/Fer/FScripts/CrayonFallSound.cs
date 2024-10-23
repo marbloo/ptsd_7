@@ -11,23 +11,21 @@ public class SoundEffect : MonoBehaviour
     public float blurDuration = 2f; // Duration to keep the blur effect active
     private bool soundPlayed = false; // Flag to check if sound has been played
     public float delaySound = 20f; // Delay before sound is played
+    public PenMovement penMovement; // Reference to the PenMovement script
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-
         if (audioSource == null)
         {
             Debug.LogError("AudioSource component is missing from this GameObject.");
             return;
         }
-
         if (sound == null)
         {
             Debug.LogError("AudioClip is not assigned.");
             return;
         }
-
         // Check if Depth of Field is available in the PostProcess profile
         if (volume.profile.TryGetSettings(out depthOfField))
         {
@@ -53,6 +51,7 @@ public class SoundEffect : MonoBehaviour
     {
         audioSource.PlayOneShot(sound);
         depthOfField.active = true; // Activate blur effect
+        penMovement.MovePen(); // Trigger the pen movement
         StartCoroutine(DeactivateBlurAfterDuration()); // Start coroutine to deactivate blur
     }
 
@@ -61,7 +60,5 @@ public class SoundEffect : MonoBehaviour
         yield return new WaitForSeconds(blurDuration);
         depthOfField.active = false; // Deactivate blur effect
         Debug.Log("Blur deactivated after duration.");
-
-        // Note: We don't reset soundPlayed here, ensuring the sound plays only once
     }
 }
