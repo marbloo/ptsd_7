@@ -1719,7 +1719,7 @@ GameObject:
   - component: {fileID: 245510220}
   m_Layer: 8
   m_Name: Paper
-  m_TagString: Untagged
+  m_TagString: Paper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4042,12 +4042,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534287180}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.23459968, y: -1.0605603, z: 0.6678406}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.005929488, y: -0.7061126, z: 0.7080498, w: -0.0059457636}
+  m_LocalPosition: {x: 0.021, y: -0.206, z: -0.057}
+  m_LocalScale: {x: 0.6791314, y: 0.58757526, z: 0.35977992}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1962835782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &534287183
 MonoBehaviour:
@@ -4075,7 +4075,7 @@ AudioSource:
   m_GameObject: {fileID: 534287180}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 8d32ec878e0039f469b61d95dc9c9d97, type: 2}
   m_audioClip: {fileID: 8300000, guid: c08d8163a92595f488f5ac803c876664, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -4722,7 +4722,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' "ENKEL" uppgift........'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4749,8 +4749,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8145,7 +8145,7 @@ AudioSource:
   m_GameObject: {fileID: 1094488660}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 8d32ec878e0039f469b61d95dc9c9d97, type: 2}
   m_audioClip: {fileID: 8300000, guid: a2a775e653ff1444fa71cfcd2e7d58ba, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -10664,7 +10664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1927057646482424550, guid: aaa00c2727d083a4981de83cdd9fa3f7, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2970001608255859003, guid: aaa00c2727d083a4981de83cdd9fa3f7, type: 3}
       propertyPath: m_Enabled
@@ -10724,7 +10724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8012673664519620074, guid: aaa00c2727d083a4981de83cdd9fa3f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.848
+      value: -0.356
       objectReference: {fileID: 0}
     - target: {fileID: 8012673664519620074, guid: aaa00c2727d083a4981de83cdd9fa3f7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10732,7 +10732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8012673664519620074, guid: aaa00c2727d083a4981de83cdd9fa3f7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.802
+      value: 1.851
       objectReference: {fileID: 0}
     - target: {fileID: 8012673664519620074, guid: aaa00c2727d083a4981de83cdd9fa3f7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11572,7 +11572,7 @@ AudioSource:
   m_GameObject: {fileID: 3260228930978178501}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 8d32ec878e0039f469b61d95dc9c9d97, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5688a54290b77bd41bae4e2587ff636b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -13417,11 +13417,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e81b2610736aa4594662c582208ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: {fileID: 377650255}
+  rayDistance: 10
   interactableLayer:
     serializedVersion: 2
     m_Bits: 256
-  maxDistance: 10
+  paperText: {fileID: 585377362}
+  fullText: This is the text that will be written. Hello Im continuing hellow mello
+    yellow felloow
+  writingSpeed: 2
+  volume: {fileID: 377650255}
   transitionDuration: 1
 --- !u!1 &1772554078
 GameObject:
@@ -14300,7 +14304,8 @@ Transform:
   m_LocalPosition: {x: -0.4376, y: -0.2102, z: -0.4548}
   m_LocalScale: {x: 0.21, y: 0.39655542, z: 0.24278194}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 534287182}
   m_Father: {fileID: 543450652967873571}
   m_LocalEulerAnglesHint: {x: 90.156006, y: -180, z: -360.962}
 --- !u!23 &1962835783
@@ -25213,7 +25218,6 @@ SceneRoots:
   - {fileID: 543450651971696924}
   - {fileID: 889065058}
   - {fileID: 774445903}
-  - {fileID: 534287182}
   - {fileID: 872966119}
   - {fileID: 555902522}
   - {fileID: 721616254}
