@@ -4,7 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Mar/StartMenu.unity
+    guid: 865d9a1ee95845847b95504ae2674cab
+  - enabled: 1
+    path: Assets/Mar/CorridorScene.unity
+    guid: 050ce9ddbc914d040b9642bf74630ea8
+  - enabled: 1
+    path: Assets/Fer/FerTest.unity
+    guid: 719525984ff8db140beb6384778f78b9
+  - enabled: 1
+    path: Assets/Scenes/Bedroom.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1451e0b6aaa271c488cb214483e476a1, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 4da27932193a5b14d98a4b6b92055efa, type: 2}
