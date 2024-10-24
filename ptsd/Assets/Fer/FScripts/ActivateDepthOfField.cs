@@ -10,10 +10,14 @@ public class PaperInteraction : MonoBehaviour
 
     // Text writing components
     public TextMeshPro paperText;  // Reference to the TextMeshPro component on the paper
+    public TextMeshPro paperText2;
     public string fullText = "This is the text that will be written.";  // The full text to write
+    public string fullText2 = "This should be answer two";
     public float writingSpeed = 0.1f;  // Delay between each letter
-    private int currentCharIndex = 0;  // Index of the character currently being written
+    private int currentCharIndex = 0;  // Index of the character currently being written for first text
+    private int currentCharIndex2 = 0;  // Index of the character for second text
     private Coroutine writingCoroutine;  // Reference to the writing coroutine
+    private bool isWritingPaused = false;  // Flag to pause and resume writing
 
     // Post-processing components for blur
     public PostProcessVolume volume;
@@ -56,6 +60,12 @@ public class PaperInteraction : MonoBehaviour
                     StartCoroutine(TransitionBlur(false));  // Disable blur
                     isLookingAtPaper = true;
                 }
+
+                // Resume writing if it was paused
+                if (isWritingPaused)
+                {
+                    isWritingPaused = false;
+                }
             }
         }
         else  // If no hit detected, enable blur
@@ -66,11 +76,10 @@ public class PaperInteraction : MonoBehaviour
                 StartCoroutine(TransitionBlur(true));  // Enable blur
                 isLookingAtPaper = false;
 
-                // Stop writing if currently writing
+                // Pause writing if currently writing
                 if (writingCoroutine != null)
                 {
-                    StopCoroutine(writingCoroutine);  // Stop the writing coroutine
-                    writingCoroutine = null;  // Clear the reference
+                    isWritingPaused = true;  // Instead of stopping the coroutine, pause it
                 }
             }
         }
@@ -82,12 +91,45 @@ public class PaperInteraction : MonoBehaviour
         // Write text from the current character index
         while (currentCharIndex < fullText.Length)
         {
-            paperText.text = fullText.Substring(0, currentCharIndex + 1);  // Update the text to show current progress
-            currentCharIndex++;  // Move to the next character
-            yield return new WaitForSeconds(writingSpeed);  // Wait before writing the next letter
+            if (!isWritingPaused)  // Write only when not paused
+            {
+                paperText.text = fullText.Substring(0, currentCharIndex + 1);  // Update the text to show current progress
+                currentCharIndex++;  // Move to the next character
+                yield return new WaitForSeconds(writingSpeed);  // Wait before writing the next letter
+            }
+            else
+            {
+                yield return null;  // If paused, wait here
+            }
         }
 
-        writingCoroutine = null;  // Clear the reference when done
+        // Once first text finishes, start writing the second text
+        if (currentCharIndex == fullText.Length)
+        {
+            writingCoroutine = StartCoroutine(WriteText2());
+        }
+    }
+
+    // Coroutine for writing the second text (with pausing/resuming logic)
+    private IEnumerator WriteText2()
+    {
+        // Write text from the current character index of the second text
+        while (currentCharIndex2 < fullText2.Length)
+        {
+            if (!isWritingPaused)  // Write only when not paused
+            {
+                paperText2.text = fullText2.Substring(0, currentCharIndex2 + 1);  // Update the text to show current progress
+                currentCharIndex2++;  // Move to the next character
+                yield return new WaitForSeconds(writingSpeed);  // Keep consistent writing speed
+            }
+            else
+            {
+                yield return null;  // If paused, wait here
+            }
+        }
+
+        // Once both texts are written, clear the coroutine reference
+        writingCoroutine = null;
     }
 
     // Coroutine for transitioning the blur (Depth of Field effect)
