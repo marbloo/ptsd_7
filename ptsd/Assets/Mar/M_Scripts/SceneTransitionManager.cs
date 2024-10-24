@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransitionManager : MonoBehaviour
 {
+    public static SceneTransitionManager Instance;
     public FadeScreen fadeScreen;
 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     public void GoToScene(int sceneIndex)
     {
         StartCoroutine(GoToSceneRoutine(sceneIndex));

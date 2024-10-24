@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Mar/CorridorScene.unity
     guid: 050ce9ddbc914d040b9642bf74630ea8
   - enabled: 1
+    path: Assets/Mar/FirstClassroom.unity
+    guid: ffebf2f3258151b4f80cb1ce65167a58
+  - enabled: 1
     path: Assets/Fer/FerTest.unity
     guid: 719525984ff8db140beb6384778f78b9
   - enabled: 1

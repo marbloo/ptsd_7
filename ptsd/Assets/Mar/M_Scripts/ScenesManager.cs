@@ -15,7 +15,8 @@ public class ScenesManager : MonoBehaviour
     public enum Scene
     {
         StartMenu,
-        Corridor,
+        CorridorScene,
+        FirstClassroom,
         FerTest,
         Bedroom
     }
@@ -27,7 +28,7 @@ public class ScenesManager : MonoBehaviour
 
     public void LoadNewGame()
     {
-        SceneManager.LoadScene(Scene.Corridor.ToString());
+        SceneManager.LoadScene(Scene.CorridorScene.ToString());
     }
 
     public void LoadNextScene()
