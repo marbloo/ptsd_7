@@ -9,9 +9,10 @@ public class TriggerScene : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Hit!");
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayScene(2);
+            PlayScene(SceneIndex);
         }
     }
 
