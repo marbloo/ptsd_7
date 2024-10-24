@@ -11,11 +11,14 @@ public class PaperInteraction : MonoBehaviour
     // Text writing components
     public TextMeshPro paperText;  // Reference to the TextMeshPro component on the paper
     public TextMeshPro paperText2;
+    public TextMeshPro paperText3; // New TextMeshPro component for third text
     public string fullText = "This is the text that will be written.";  // The full text to write
     public string fullText2 = "This should be answer two";
+    public string fullText3 = "This is the final answer."; // The full text for the third text
     public float writingSpeed = 0.1f;  // Delay between each letter
     private int currentCharIndex = 0;  // Index of the character currently being written for first text
-    private int currentCharIndex2 = 0;  // Index of the character for second text
+    private int currentCharIndex2 = 0;  // Index of the character currently being written for second text
+    private int currentCharIndex3 = 0;  // Index of the character currently being written for third text
     private Coroutine writingCoroutine;  // Reference to the writing coroutine
     private bool isWritingPaused = false;  // Flag to pause and resume writing
 
@@ -85,10 +88,10 @@ public class PaperInteraction : MonoBehaviour
         }
     }
 
-    // Coroutine for text writing
+    // Coroutine for writing the first text
     private IEnumerator WriteText()
     {
-        // Write text from the current character index
+        // Write text from the current character index for the first text
         while (currentCharIndex < fullText.Length)
         {
             if (!isWritingPaused)  // Write only when not paused
@@ -110,7 +113,7 @@ public class PaperInteraction : MonoBehaviour
         }
     }
 
-    // Coroutine for writing the second text (with pausing/resuming logic)
+    // Coroutine for writing the second text
     private IEnumerator WriteText2()
     {
         // Write text from the current character index of the second text
@@ -128,7 +131,32 @@ public class PaperInteraction : MonoBehaviour
             }
         }
 
-        // Once both texts are written, clear the coroutine reference
+        // Once the second text finishes, start writing the third text
+        if (currentCharIndex2 == fullText2.Length)
+        {
+            writingCoroutine = StartCoroutine(WriteText3());
+        }
+    }
+
+    // Coroutine for writing the third text
+    private IEnumerator WriteText3()
+    {
+        // Write text from the current character index of the third text
+        while (currentCharIndex3 < fullText3.Length)
+        {
+            if (!isWritingPaused)  // Write only when not paused
+            {
+                paperText3.text = fullText3.Substring(0, currentCharIndex3 + 1);  // Update the text to show current progress
+                currentCharIndex3++;  // Move to the next character
+                yield return new WaitForSeconds(writingSpeed);  // Keep consistent writing speed
+            }
+            else
+            {
+                yield return null;  // If paused, wait here
+            }
+        }
+
+        // Once all texts are written, clear the coroutine reference
         writingCoroutine = null;
     }
 
