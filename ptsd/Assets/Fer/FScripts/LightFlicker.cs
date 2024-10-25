@@ -4,19 +4,21 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class LightFlicker : MonoBehaviour
 {
-    public Light flickerLight;              // Reference to the light you want to flicker
-    public Renderer lightRenderer;          // Reference to the cube's renderer (which has the material)
-    public Color lightOnColor = Color.white;  // Color of the material when the light is on
-    public Color lightOffColor = Color.gray;  // Color of the material when the light is off
-    public float flickerDuration = 5f;      // Duration of the flicker effect
-    public float flickerSpeed = 0.1f;       // How fast the light flickers on/off
-    public float startDelay = 10f;          // Delay in seconds before flickering starts
-    public AudioSource soundEffect;         // Reference to the sound effect
+    public Light flickerLight;                 // Reference to the light you want to flicker
+    public Renderer lightRenderer;             // Reference to the cube's renderer (which has the material)
+    public Color lightOnColor = Color.white;   // Color of the material when the light is on
+    public Color lightOffColor = Color.gray;   // Color of the material when the light is off
+    public float flickerDuration = 5f;         // Duration of the flicker effect
+    public float flickerSpeed = 0.1f;          // How fast the light flickers on/off
+    public float startDelay = 10f;             // Delay in seconds before flickering starts
+    public AudioSource soundEffect;            // Reference to the sound effect
     public PostProcessVolume postProcessVolume; // Reference to the Post Process Volume
-    private DepthOfField depthOfField;      // Reference to the Depth of Field effect
 
-    private bool isFlickering = false;      // Track if the light is currently flickering
-    private Material cubeMaterial;          // Reference to the material
+    private DepthOfField depthOfField;         // Reference to the Depth of Field effect
+    private bool isFlickering = false;         // Track if the light is currently flickering
+    private Material cubeMaterial;             // Reference to the material
+    private float normalIntensity;             // Store the normal intensity of the light
+    public float flickerIntensity = 2f;        // Intensity during flickering
 
     void Start()
     {
@@ -25,6 +27,9 @@ public class LightFlicker : MonoBehaviour
 
         // Get the Depth of Field from the Post Process Volume
         postProcessVolume.profile.TryGetSettings(out depthOfField);
+
+        // Store the normal intensity of the light
+        normalIntensity = flickerLight.intensity;
 
         // Start coroutine with the delay
         StartCoroutine(StartAfterDelay());
@@ -61,8 +66,9 @@ public class LightFlicker : MonoBehaviour
             // Randomly turn the light on or off
             bool lightIsOn = Random.value > 0.5f;
 
-            // Toggle the light
+            // Toggle the light and set intensity
             flickerLight.enabled = lightIsOn;
+            flickerLight.intensity = lightIsOn ? flickerIntensity : normalIntensity;
 
             // Toggle the material color
             if (lightIsOn)
@@ -80,6 +86,7 @@ public class LightFlicker : MonoBehaviour
 
         // Ensure the light and material color are on after flickering ends
         flickerLight.enabled = true;
+        flickerLight.intensity = normalIntensity;  // Reset intensity to normal
         cubeMaterial.color = lightOnColor;
 
         // Deactivate blur effect after flickering

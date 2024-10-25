@@ -11,12 +11,7 @@ public class Fading : MonoBehaviour
     void Start()
     {
         quadRenderer = GetComponent<Renderer>(); // Get the Renderer component attached to the Quad
-        if (quadRenderer == null)
-        {
-            Debug.LogError("Renderer component is missing from this GameObject.");
-            return;
-        }
-
+        
         if (fadeOnStart)
         {
             StartCoroutine(FadeRoutine(1f, 0f, fadeDuration)); // Start fading in when the scene starts

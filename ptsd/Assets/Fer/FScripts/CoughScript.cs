@@ -6,12 +6,14 @@ public class DelayedSound : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip sound;
 
+    
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
        
 
-        StartCoroutine(PlaySoundAfterDelay(60f)); // Start the coroutine to play sound after 60 seconds
+        StartCoroutine(PlaySoundAfterDelay(40f)); // Start the coroutine to play sound after 60 seconds
     }
 
     private IEnumerator PlaySoundAfterDelay(float delay)
@@ -21,3 +23,4 @@ public class DelayedSound : MonoBehaviour
        
     }
 }
+
