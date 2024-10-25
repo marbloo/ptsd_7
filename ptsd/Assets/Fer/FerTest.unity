@@ -5598,7 +5598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartbeatAudioSource: {fileID: 872966117}
   targetVolume: 1
-  fadeDuration: 10
+  fadeDuration: 5
 --- !u!4 &872966119
 Transform:
   m_ObjectHideFlags: 0
@@ -8804,7 +8804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartbeatAudioSource: {fileID: 1478006531}
   targetVolume: 1
-  fadeDuration: 10
+  fadeDuration: 5
 --- !u!82 &1478006531
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8815,7 +8815,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 8d32ec878e0039f469b61d95dc9c9d97, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4de40c1768f20294387fc9db23e68a37, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9060b972c0e2b9c4597c8fb38b5e31b0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
