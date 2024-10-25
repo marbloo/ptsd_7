@@ -6,6 +6,7 @@ TagManager:
   tags:
   - headset
   - Paper
+  - Door
   layers:
   - Default
   - TransparentFX
