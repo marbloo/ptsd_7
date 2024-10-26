@@ -10,6 +10,7 @@ public class SceneChange : MonoBehaviour
    // public static SceneTransitionManager Instance;
     public Fading fadeScreen;
     public int SceneIndex;
+    public AudioSource FinalBell;
 
     //private void Awake()
     //{
@@ -22,7 +23,8 @@ public class SceneChange : MonoBehaviour
     {
         Debug.Log("Hit!");
         if (other.gameObject.CompareTag("Player"))
-        {
+        {   
+            FinalBell.Play();
             GoToSceneAsync(SceneIndex);
 
         }

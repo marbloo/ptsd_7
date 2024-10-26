@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
-
-public class SoundEffect : MonoBehaviour
+using UnityEngine.XR.Interaction.Toolkit;
+public class CrayonFallSound : MonoBehaviour
 {
     private AudioSource audioSource;
     public AudioClip sound;
@@ -12,6 +12,8 @@ public class SoundEffect : MonoBehaviour
     private bool soundPlayed = false; // Flag to check if sound has been played
     public float delaySound = 20f; // Delay before sound is played
     public PenMovement penMovement; // Reference to the PenMovement script
+
+    public HapticHands haptics;
 
     void Start()
     {
@@ -37,6 +39,8 @@ public class SoundEffect : MonoBehaviour
         }
     }
 
+  
+
     void Update()
     {
         // Automatically play sound and activate blur if Depth of Field is inactive
@@ -53,12 +57,16 @@ public class SoundEffect : MonoBehaviour
         depthOfField.active = true; // Activate blur effect
         penMovement.MovePen(); // Trigger the pen movement
         StartCoroutine(DeactivateBlurAfterDuration()); // Start coroutine to deactivate blur
+        haptics.TriggerBothHaptics();
+
+
     }
 
-    private IEnumerator DeactivateBlurAfterDuration()
+     IEnumerator DeactivateBlurAfterDuration()
     {
         yield return new WaitForSeconds(blurDuration);
         depthOfField.active = false; // Deactivate blur effect
         Debug.Log("Blur deactivated after duration.");
+      
     }
 }

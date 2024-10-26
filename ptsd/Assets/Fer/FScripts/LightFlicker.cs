@@ -20,6 +20,7 @@ public class LightFlicker : MonoBehaviour
     private float normalIntensity;             // Store the normal intensity of the light
     public float flickerIntensity = 2f;        // Intensity during flickering
 
+    public HapticHands haptics;
     void Start()
     {
         // Get the material from the renderer
@@ -58,6 +59,7 @@ public class LightFlicker : MonoBehaviour
         if (depthOfField != null)
         {
             depthOfField.active = true; // Enable the blur effect
+            haptics.TriggerBothHaptics();
         }
 
         // Flicker for the specified duration
@@ -105,6 +107,7 @@ public class LightFlicker : MonoBehaviour
         {
             flickerDuration = customDuration > 0 ? customDuration : flickerDuration;
             StartCoroutine(FlickerLightAndMaterial());
+
         }
     }
 }
