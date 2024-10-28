@@ -15,7 +15,7 @@ public class fadeAudio : MonoBehaviour
         {
             StopCoroutine(fadeCoroutine);
         }
-        fadeCoroutine = StartCoroutine(FadeAudio(1, 0, fadeDuration));
+        fadeCoroutine = StartCoroutine(FadeAudio(0.5f, 0, fadeDuration));
     }
 
     //private void OnTriggerExit(Collider other)
