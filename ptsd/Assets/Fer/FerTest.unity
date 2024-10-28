@@ -4019,7 +4019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: c08d8163a92595f488f5ac803c876664, type: 3}
   volume: {fileID: 377650255}
-  blurDuration: 5
+  blurDuration: 3
   delaySound: 10
   penMovement: {fileID: 1962835785}
   haptics: {fileID: 1968988246}
@@ -6268,7 +6268,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cbc2af8f2c261084e8f5393e5e682839, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8419,7 +8419,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Look at your test paper to focus
+  m_text: Look at your test paper to focus and write the test.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10771,7 +10771,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 8d32ec878e0039f469b61d95dc9c9d97, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9060b972c0e2b9c4597c8fb38b5e31b0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -12728,7 +12728,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: General Knowlage Test
+  m_text: General Knowledge Test
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
